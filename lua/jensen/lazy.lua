@@ -29,6 +29,9 @@ require("lazy").setup({
     spec = {
         { import = "jensen.plugins" },
     },
+    ui = {
+        border = "rounded",
+    },
     install = {
         colorscheme = {
             "PaperColor",
