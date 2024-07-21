@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ";"
 
 -- Readline style insert and command mode shortcuts
 vim.keymap.set("i", "<C-a>", "<C-o>^", { desc = "Jump to start of line" })

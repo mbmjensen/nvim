@@ -38,4 +38,7 @@ require("lazy").setup({
             "habamax",
         }
     },
+    change_detection = {
+        enabled = false,
+    },
 })

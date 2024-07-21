@@ -1,3 +1,9 @@
 return {
-    {"https://github.com/wellle/targets.vim.git"},
+    {
+        'echasnovski/mini.ai',
+        version = false,
+        opts = {
+            silent = true,
+        },
+    },
 }
