@@ -10,7 +10,6 @@ return {
         opts = function()
             -- Ghost text is the preview text that appears in front of the cursor
             vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-
             local cmp = require("cmp")
 
             return {

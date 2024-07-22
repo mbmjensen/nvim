@@ -9,7 +9,7 @@ return {
     },
     {
         "https://github.com/tpope/vim-fugitive.git",
-        cmd = { "Git", "GBrowse" },
+        cmd = { "Git" },
         lazy = true,
         keys = {
             {"<Leader>gb", "<CMD>Git blame<CR>", desc = "git blame"},
