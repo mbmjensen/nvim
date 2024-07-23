@@ -40,3 +40,7 @@ vim.keymap.set("n", "s;", "<CMD>Telescope commands<CR>", { desc = "[S]earch [C]o
 vim.keymap.set("n", "sb", "<CMD>Telescope buffers<CR>", { desc = "[S]earch [B]uffers" })
 vim.keymap.set("n", "sf", "<CMD>Telescope find_files<CR>", { desc = "[S]earch [F]iles" })
 vim.keymap.set("n", "sh", "<CMD>Telescope help_tags<CR>", { desc = "[S]earch [H]elp" })
+
+-- Git Keymappings
+vim.keymap.set("n", "<Leader>gs", "<CMD>Git<CR>", { desc = "git summary" })
+vim.keymap.set("n", "<Leader>gS", "<CMD>Git | only<CR>", { desc = "git fullscreen-summary" })
