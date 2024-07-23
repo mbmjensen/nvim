@@ -5,6 +5,7 @@ return {
 		dependencies = {
 			"https://github.com/nvim-lua/plenary.nvim.git",
 			"https://github.com/nvim-telescope/telescope-fzf-native.nvim.git",
+			"https://github.com/nvim-telescope/telescope-ui-select.nvim.git",
 		},
 		config = function()
 			-- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -47,6 +48,7 @@ return {
 
 			-- Enable Telescope extensions if they are installed
 			pcall(require("telescope").load_extension, "fzf")
+			pcall(require("telescope").load_extension, "ui-select")
 		end,
 	},
 	{
