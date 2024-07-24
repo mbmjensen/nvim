@@ -40,6 +40,10 @@ return {
 					vim.cmd.highlight("DiagnosticWarn gui=bold guifg=green guibg=none")
 					vim.cmd.highlight("DiagnosticHint gui=bold guifg=green guibg=none")
 					vim.cmd.highlight("LspDiagnosticsDefaultInformation guibg=none")
+
+					-- Add a border underneath the treesitter context.
+					vim.cmd.highlight("TreesitterContextBottom gui=underline guisp=Grey")
+					vim.cmd.highlight("TreesitterContextLineNumberBottom gui=underline guisp=Grey")
 				end,
 			})
 
