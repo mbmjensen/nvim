@@ -3,13 +3,17 @@ return {
 		"https://github.com/hrsh7th/nvim-cmp.git",
 		event = "InsertEnter",
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
+			"https://github.com/hrsh7th/cmp-nvim-lsp.git",
+			"https://github.com/hrsh7th/cmp-buffer.git",
+			"https://github.com/hrsh7th/cmp-path.git",
+			"https://github.com/hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		opts = function()
 			-- Ghost text is the preview text that appears in front of the cursor
-			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+			vim.api.nvim_set_hl(0, "CmpGhostText", {
+				link = "Comment",
+				default = true,
+			})
 			local cmp = require("cmp")
 
 			return {
@@ -29,6 +33,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "path" },
+					{ name = 'nvim_lsp_signature_help' }
 				}),
 				experimental = {
 					ghost_text = {
