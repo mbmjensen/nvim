@@ -11,8 +11,7 @@ vim.opt.linebreak = true -- Wrap lines at word boundaries
 vim.opt.splitbelow = true -- New windows go below
 vim.opt.splitright = true -- and right of a split
 
-vim.opt.laststatus = 3 -- Display only a single, permanent status bar
--- at the bottom of the screen
+vim.opt.laststatus = 3 -- Display only a single, permanent status bar at the bottom of the screen
 
 -- Search Settings
 vim.opt.ignorecase = true -- Make the search case-insensitive by default

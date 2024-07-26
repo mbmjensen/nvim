@@ -1,3 +1,3 @@
-require("jensen.options")
-require("jensen.keymaps")
-require("jensen.lazy")
+require("options")
+require("keymaps")
+require("lazy-setup")

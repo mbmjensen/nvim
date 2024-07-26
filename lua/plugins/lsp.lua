@@ -1,17 +1,34 @@
+local language_servers = {
+	"jdtls",
+	"lua_ls",
+	"pyright",
+	"vimls",
+}
+
 return {
 	{
 		"https://github.com/neovim/nvim-lspconfig.git",
 		dependencies = {
 			"https://github.com/williamboman/mason.nvim.git",
 			"https://github.com/williamboman/mason-lspconfig.nvim.git",
+			{ "https://github.com/nvim-java/nvim-java.git", opts = {} },
 		},
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			require("lspconfig").jdtls.setup({
+				capabilities = capabilities,
+			})
+
 			require("lspconfig").lua_ls.setup({
 				capabilities = capabilities,
 			})
 
 			require("lspconfig").pyright.setup({
+				capabilities = capabilities,
+			})
+
+			require("lspconfig").vimls.setup({
 				capabilities = capabilities,
 			})
 
@@ -30,7 +47,13 @@ return {
 	},
 	{
 		"https://github.com/williamboman/mason-lspconfig.nvim.git",
-		opts = {},
+		opts = {
+		},
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = required_packages,
+			})
+		end
 	},
 	{
 		"https://github.com/folke/lazydev.nvim.git",

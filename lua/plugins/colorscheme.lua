@@ -48,17 +48,41 @@ return {
 			})
 
 			-- Use PaperColor as the default colorscheme
-			vim.cmd.colorscheme("PaperColor")
+			-- vim.cmd.colorscheme("PaperColor")
 		end,
 	},
 	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		opts = {
-			variant = "dawn",
-			styles = {
-				transparency = true,
-			},
-		},
+		'projekt0n/github-nvim-theme',
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require('github-theme').setup({
+				options = {
+					transparent = true,
+				},
+			})
+
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "github_light",
+				callback = function(ev)
+					-- vim.cmd.highlight("LazyButton guifg=#444444 guibg=none")
+					-- vim.cmd.highlight("LazyButtonActive gui=bold guifg=#d75f00 guibg=none")
+					-- vim.cmd.highlight("LazyH1 gui=bold guifg=#d75f00 guibg=none")
+					-- vim.cmd.highlight("LazyH2 guifg=#005faf guibg=none")
+
+					-- Add a border underneath the treesitter context.
+					vim.cmd.highlight("TreesitterContextBottom gui=underline guisp=Grey")
+					vim.cmd.highlight("TreesitterContextLineNumberBottom gui=underline guisp=Grey")
+
+					-- Mason Highlighting
+					vim.cmd.highlight("link MasonHighlightBlockBold MasonHighlight")
+					vim.cmd.highlight("link MasonMutedBlock Bold")
+					vim.cmd.highlight("link MasonHeader Title")
+				end,
+			})
+			-- Use Github light as the default theme
+			vim.cmd.colorscheme("github_light")
+
+		end,
 	},
 }
