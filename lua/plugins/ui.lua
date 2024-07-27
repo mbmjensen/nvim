@@ -1,15 +1,13 @@
 return {
 	{
-		"lukas-reineke/indent-blankline.nvim",
+		"https://github.com/lukas-reineke/indent-blankline.nvim.git",
 		main = "ibl",
 		opts = {
 			indent = {
-				highlight = { "Normal" },
 				char = "│",
 				tab_char = "│",
 			},
 			whitespace = {
-				highlight = { "Normal" },
 				remove_blankline_trail = false,
 			},
 			scope = {
