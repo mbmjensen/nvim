@@ -1,8 +1,8 @@
 return {
 	{
 		"https://github.com/NLKNguyen/papercolor-theme.git",
-		lazy = false, -- Ensure that the colorscheme loads before other plugins
-		priority = 100, -- which might set their colors using the colorscheme.
+		lazy = true, -- Ensure that the colorscheme loads before other plugins
+		-- priority = 100, -- which might set their colors using the colorscheme.
 		config = function()
 			-- Always run before loading PaperColor to properly configure colors
 			vim.api.nvim_create_autocmd("ColorSchemePre", {
@@ -75,14 +75,30 @@ return {
 					vim.cmd.highlight("TreesitterContextLineNumberBottom gui=underline guisp=Grey")
 
 					-- Mason Highlighting
-					vim.cmd.highlight("link MasonHighlightBlockBold MasonHighlight")
-					vim.cmd.highlight("link MasonMutedBlock Bold")
-					vim.cmd.highlight("link MasonHeader Title")
+					vim.cmd.highlight("MasonHighlight guifg=#0969da")
+					vim.cmd.highlight("MasonHighlightBlockBold guifg=#fd8c73 gui=bold")
+					vim.cmd.highlight("link MasonMutedBlock Normal")
+					vim.cmd.highlight("link MasonHeader Bold")
+
+					-- vim.api.nvim_set_hl(0, "@ibl.indent.char.1", {
+					-- 	fg = "#d0d7de",
+					-- })
+					-- vim.api.nvim_set_hl(0, "@ibl.whitespace.char.1", {
+					-- 	fg = "#d0d7de",
+					-- })
+					vim.api.nvim_set_hl(0, "IblIndent", {
+						fg = "#afb8c1",
+					})
+					vim.api.nvim_set_hl(0, "IblScope", {
+						fg = "#8c959f",
+					})
 				end,
 			})
-			-- Use Github light as the default theme
-			vim.cmd.colorscheme("github_light")
 
+			-- Use Github light as the default theme
+			vim.opt.termguicolors = true
+			vim.opt.background = "light"
+			vim.cmd.colorscheme("github_light")
 		end,
 	},
 }
