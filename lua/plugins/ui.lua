@@ -24,4 +24,9 @@ return {
 			},
 		},
 	},
+	{
+		"https://github.com/folke/trouble.nvim",
+		opts = {},
+		cmd = "Trouble",
+	},
 }
