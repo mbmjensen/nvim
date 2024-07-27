@@ -43,7 +43,7 @@ setup_lazy({
 		},
 		install = {
 			colorscheme = {
-				"habamax",
+				"github_light",
 			},
 		},
 		change_detection = {
