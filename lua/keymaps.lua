@@ -65,6 +65,12 @@ vim.keymap.set("n", "<Leader>od", "<CMD>Trouble diagnostics toggle<CR>", { desc 
 vim.keymap.set("n", "<Leader>oq", "<CMD>Trouble qflist toggle<CR>", { desc = "Quickfix (Trouble)" })
 
 
+-- LSP keymaps
+vim.keymap.set("n", "<Leader>ls", "<CMD>LspStart<CR>", { desc = "Start LSP" })
+vim.keymap.set("n", "<Leader>lr", "<CMD>LspRestart<CR>", { desc = "Start LSP" })
+vim.keymap.set("n", "<Leader>li", "<CMD>LspInfo<CR>", { desc = "LSP Info" })
+
+
 -- LSP keybindings (stolen from kickstarter)
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
