@@ -26,10 +26,11 @@ return {
 			search_method = "cover_or_next",
 		},
 	},
+	{ 'echasnovski/mini.bracketed', opts = {}, version = false },
 	{ -- Highlight, edit, and navigate code
 		'https://github.com/nvim-treesitter/nvim-treesitter.git',
 		dependencies = {
-			"https://github.com/nvim-treesitter/nvim-treesitter-context.git",
+			-- "https://github.com/nvim-treesitter/nvim-treesitter-context.git",
 			"https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git",
 		},
 		build = ':TSUpdate',
@@ -120,4 +121,9 @@ return {
 			require('nvim-treesitter.configs').setup(opts)
 		end,
 	},
+	{
+    'https://github.com/windwp/nvim-autopairs.git',
+    event = "InsertEnter",
+    config = true
+},
 }
