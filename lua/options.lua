@@ -1,3 +1,6 @@
+-- Leader Keys
+vim.g.mapleader = " "
+
 -- Indent Settings
 vim.opt.shiftwidth = 4 -- Indent with 4 spaces
 vim.opt.tabstop = 4 -- Show tabs as 4 spaces
