@@ -26,7 +26,7 @@ return {
 			search_method = "cover_or_next",
 		},
 	},
-	{ 'echasnovski/mini.bracketed', opts = {}, version = false },
+	{ 'https://github.com/echasnovski/mini.bracketed.git', opts = {}, version = false },
 	{ -- Highlight, edit, and navigate code
 		'https://github.com/nvim-treesitter/nvim-treesitter.git',
 		dependencies = {
