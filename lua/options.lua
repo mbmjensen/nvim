@@ -7,7 +7,6 @@ vim.opt.tabstop = 4 -- Show tabs as 4 spaces
 
 -- Line Wrap Settings
 vim.opt.breakindent = true -- Indent wrapped lines
-vim.opt.showbreak = "..." -- Prefix wrapped rows with 3 dots
 vim.opt.linebreak = true -- Wrap lines at word boundaries
 
 -- Window Settings
