@@ -8,6 +8,10 @@ return {
 		end,
 		opts = {
 			preset = "modern",
+			triggers = {
+				{ "<auto>", mode = "nixsotc" },
+				{ "s",      mode = { "n", "v", name = "+search" } }
+			},
 		},
 		plugins = {
 			marks = true, -- shows a list of your marks on ' and `
