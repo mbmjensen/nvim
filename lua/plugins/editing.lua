@@ -30,7 +30,6 @@ return {
 	{ -- Highlight, edit, and navigate code
 		'https://github.com/nvim-treesitter/nvim-treesitter.git',
 		dependencies = {
-			-- "https://github.com/nvim-treesitter/nvim-treesitter-context.git",
 			"https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git",
 		},
 		build = ':TSUpdate',
@@ -54,23 +53,15 @@ return {
 			auto_install = true,
 			highlight = {
 				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
+				-- Some languages depend on vim's regex highlighting system (such as Ruby) for
+				-- indent rules. If you are experiencing weird indenting issues, add the language
+				-- to the list of additional_vim_regex_highlighting and disabled languages for
+				-- indent.
 				additional_vim_regex_highlighting = { 'ruby' },
 			},
 			indent = {
 				enable = true,
 				disable = { 'ruby' },
-			},
-			incremental_selection = {
-				enable = false,
-				keymaps = {
-					init_selection = "gnn",
-					node_incremental = "grn",
-					scope_incremental = "grc",
-					node_decremental = "grm",
-				},
 			},
 			textobjects = {
 				select = { --Configure https://github.com/nvim-treesitter/nvim-treesitter-context
@@ -81,13 +72,12 @@ return {
 
 					keymaps = {
 						-- You can use the capture groups defined in textobjects.scm
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						-- you can optionally set descriptions to the mappings (used in the desc parameter of nvim_buf_set_keymap
-						["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+						["af"] = { query = "@function.outer", desc = "Select entire function" },
+						["if"] = { query = "@function.inner", desc = "Select function contents" },
+						["ac"] = { query = "@class.outer", desc = "Select entire class" },
+						["ic"] = { query = "@class.inner", desc = "Select class contents" },
 					},
-					-- You can choose the select mode (default is charwise 'v')
+					-- Selection Mode (default is charwise 'v')
 					selection_modes = {
 						['@function.inner'] = 'V',
 						['@function.outer'] = 'V',
@@ -117,13 +107,13 @@ return {
 		},
 		config = function(_, opts)
 			-- Prefer git instead of curl in order to improve connectivity in some environments
-			-- require('nvim-treesitter.install').prefer_git = true
+			require('nvim-treesitter.install').prefer_git = true
 			require('nvim-treesitter.configs').setup(opts)
 		end,
 	},
 	{
-    'https://github.com/windwp/nvim-autopairs.git',
-    event = "InsertEnter",
-    config = true
-},
+		'https://github.com/windwp/nvim-autopairs.git',
+		event = "InsertEnter",
+		config = true
+	},
 }
