@@ -47,7 +47,8 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = required_packages,
+				automatic_installation = false,
+				ensure_installed = language_servers,
 			})
 		end
 	},
