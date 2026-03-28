@@ -27,19 +27,19 @@ vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent 
 vim.keymap.set("n", "yss", "ys_", { remap = true })
 
 -- Make it easier to search through search and command histories
-vim.keymap.set("n", "q/", "<CMD>Telescope search_history<CR>", { desc = "Search / history" })
-vim.keymap.set("n", "q:", "<CMD>Telescope command_history<CR>", { desc = "Search command history" })
+vim.keymap.set("n", "q/", function() Snacks.picker.search_history() end, { desc = "Search / history" })
+vim.keymap.set("n", "q:", function() Snacks.picker.command_history() end, { desc = "Search command history" })
 
 -- Use s for [s]earch instead of [s]ubstitute
 vim.keymap.set({ "n" }, "s", "<NOP>")
 
-vim.keymap.set("n", "s;", "<CMD>Telescope commands<CR>", { desc = "[S]earch [C]ommands" })
-vim.keymap.set("n", "sb", "<CMD>Telescope buffers<CR>", { desc = "[S]earch [B]uffers" })
-vim.keymap.set("n", "sf", "<CMD>Telescope find_files<CR>", { desc = "[S]earch [F]iles" })
-vim.keymap.set("n", "sh", "<CMD>Telescope help_tags<CR>", { desc = "[S]earch [H]elp" })
-vim.keymap.set("n", "sc", "<CMD>Telescope git_commits<CR>", { desc = "[S]earch [C]ommits" })
-vim.keymap.set("n", "sC", "<CMD>Telescope git_bcommits<CR>", { desc = "buffer-commits" })
-vim.keymap.set("n", "st", "<CMD>Telescope<CR>", { desc = "telescope" })
+vim.keymap.set("n", "s;", function() Snacks.picker.commands() end, { desc = "[S]earch [C]ommands" })
+vim.keymap.set("n", "sb", function() Snacks.picker.buffers() end, { desc = "[S]earch [B]uffers" })
+vim.keymap.set("n", "sf", function() Snacks.picker.files() end, { desc = "[S]earch [F]iles" })
+vim.keymap.set("n", "sh", function() Snacks.picker.help() end, { desc = "[S]earch [H]elp" })
+vim.keymap.set("n", "sc", function() Snacks.picker.git_log() end, { desc = "[S]earch [C]ommits" })
+vim.keymap.set("n", "sC", function() Snacks.picker.git_log_file() end, { desc = "buffer-commits" })
+vim.keymap.set("n", "st", function() Snacks.picker.pickers() end, { desc = "pickers" })
 
 -- Git Keymappings
 vim.keymap.set("n", "<Leader>gs", "<CMD>Git<CR>", { desc = "git summary" })
