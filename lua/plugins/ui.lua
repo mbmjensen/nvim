@@ -25,7 +25,7 @@ return {
 	{
 		'https://github.com/nvim-treesitter/nvim-treesitter-context.git',
 		opts = {
-			enable = true,
+			enable = false, -- off by default; toggle with <Leader>tc
 		},
 	},
 	{
