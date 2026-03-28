@@ -23,7 +23,7 @@ return {
 				suffix_last = "",
 				suffix_next = "",
 			},
-			search_method = "cover_or_next",
+			search_method = "cover_or_next", -- match the surrounding covering the cursor, else the next one
 		},
 	},
 	{ 'https://github.com/echasnovski/mini.bracketed.git', opts = {}, version = false },
@@ -49,8 +49,7 @@ return {
 				'vim',
 				'vimdoc',
 			},
-			-- Autoinstall languages that are not installed
-			auto_install = true,
+			auto_install = true, -- install missing parsers when opening a buffer
 			highlight = {
 				enable = true,
 				-- Some languages depend on vim's regex highlighting system (such as Ruby) for
@@ -66,10 +65,7 @@ return {
 			textobjects = {
 				select = {
 					enable = true,
-
-					-- Automatically jump forward to textobjects, similar to targets.vim
-					lookahead = true,
-
+					lookahead = true, -- jump forward to the next textobject if the cursor isn't inside one
 					keymaps = {
 						-- You can use the capture groups defined in textobjects.scm
 						["af"] = { query = "@function.outer", desc = "Select entire function" },
@@ -77,15 +73,14 @@ return {
 						["ac"] = { query = "@class.outer", desc = "Select entire class" },
 						["ic"] = { query = "@class.inner", desc = "Select class contents" },
 					},
-					-- Selection Mode (default is charwise 'v')
 					selection_modes = {
-						['@function.inner'] = 'V',
-						['@function.outer'] = 'V',
+						['@function.inner'] = 'V', -- linewise for function bodies
+						['@function.outer'] = 'V', -- linewise for whole functions
 					},
 				},
 				move = {
 					enable = true,
-					set_jumps = true, -- whether to set jumps in the jumplist
+					set_jumps = true, -- add motion positions to the jumplist
 					goto_next_start = {
 						["]f"] = "@function.outer",
 						["]c"] = "@class.outer",

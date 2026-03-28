@@ -57,7 +57,7 @@ return {
 		"https://github.com/williamboman/mason-lspconfig.nvim.git",
 		config = function()
 			require("mason-lspconfig").setup({
-				automatic_installation = false,
+				automatic_installation = false, -- only install servers listed in ensure_installed
 				ensure_installed = vim.list_extend({ "jdtls" }, language_servers),
 			})
 		end
@@ -69,7 +69,7 @@ return {
 			library = {
 				{
 					path = "luvit-meta/library",
-					words = { "vim%.uv" },
+					words = { "vim%.uv" }, -- load typings only when vim.uv is referenced
 				},
 			},
 		},
@@ -84,7 +84,7 @@ return {
 			opts.sources = opts.sources or {}
 			table.insert(opts.sources, {
 				name = "lazydev",
-				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+				group_index = 0, -- prioritize above LuaLS completions
 			})
 		end,
 	},

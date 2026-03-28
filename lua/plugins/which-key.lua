@@ -5,19 +5,19 @@ return {
 		opts = {
 			preset = "modern",
 			triggers = {
-				{ "<auto>", mode = "nixsotc" },
-				{ "s",      mode = { "n", "v", name = "+search" } }
+				{ "<auto>", mode = "nixsotc" },            -- auto-trigger for most modes
+				{ "s",      mode = { "n", "v", name = "+search" } } -- manual trigger for s (remapped as search prefix)
 			},
 			plugins = {
-				marks = true,
-				registers = true,
+				marks = true,     -- show marks on ' and `
+				registers = true, -- show registers on " (normal) and <C-r> (insert)
 				spelling = {
-					enabled = true,
-					suggestions = 20,
+					enabled = true,   -- show WhichKey on z= to pick spelling suggestions
+					suggestions = 20, -- number of spelling suggestions to show
 				},
 			},
 			wo = {
-				winblend = 50,
+				winblend = 50, -- semi-transparent popup window
 			},
 		},
 	},
