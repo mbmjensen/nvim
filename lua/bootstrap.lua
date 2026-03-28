@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 local function install_lazy(opts)
 	local system_out = vim.fn.system({

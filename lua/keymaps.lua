@@ -56,7 +56,6 @@ vim.keymap.set("n", "<Leader>tc", "<CMD>TSContextToggle<CR>", { desc = "Toggle t
 -- Open Keymappings
 vim.keymap.set("n", "<Leader>oz", "<CMD>Lazy<CR>", { desc = "Open Lazy" })
 vim.keymap.set("n", "<Leader>om", "<CMD>Mason<CR>", { desc = "Open Mason" })
-vim.keymap.set("n", "<Leader>oq", "<CMD>copen<CR>", { desc = "Open quickfix" })
 vim.keymap.set("n", "<Leader>ot", "<CMD>startinsert | terminal<CR>", { desc = "Open terminal" })
 vim.keymap.set("n", "<Leader>od", "<CMD>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (Trouble)" })
 vim.keymap.set("n", "<Leader>oq", "<CMD>Trouble qflist toggle<CR>", { desc = "Quickfix (Trouble)" })
@@ -64,7 +63,7 @@ vim.keymap.set("n", "<Leader>oq", "<CMD>Trouble qflist toggle<CR>", { desc = "Qu
 
 -- LSP keymaps
 vim.keymap.set("n", "<Leader>ls", "<CMD>LspStart<CR>", { desc = "Start LSP" })
-vim.keymap.set("n", "<Leader>lr", "<CMD>LspRestart<CR>", { desc = "Start LSP" })
+vim.keymap.set("n", "<Leader>lr", "<CMD>LspRestart<CR>", { desc = "Restart LSP" })
 vim.keymap.set("n", "<Leader>li", "<CMD>LspInfo<CR>", { desc = "LSP Info" })
 
 
@@ -125,13 +124,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		-- WARN: This is not Goto Definition, this is Goto Declaration.
 		--  For example, in C this would take you to the header.
 		map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-
-		vim.api.nvim_create_autocmd('LspDetach', {
-			group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-			callback = function(event2)
-				vim.lsp.buf.clear_references()
-				vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
-			end,
-		})
 	end
 })
