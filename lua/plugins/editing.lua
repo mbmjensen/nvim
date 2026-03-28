@@ -64,7 +64,7 @@ return {
 				disable = { 'ruby' },
 			},
 			textobjects = {
-				select = { --Configure https://github.com/nvim-treesitter/nvim-treesitter-context
+				select = {
 					enable = true,
 
 					-- Automatically jump forward to textobjects, similar to targets.vim
@@ -110,6 +110,12 @@ return {
 			require('nvim-treesitter.install').prefer_git = true
 			require('nvim-treesitter.configs').setup(opts)
 		end,
+	},
+	{
+		'https://github.com/nvim-treesitter/nvim-treesitter-context.git',
+		opts = {
+			enable = true,
+		},
 	},
 	{
 		'https://github.com/windwp/nvim-autopairs.git',
