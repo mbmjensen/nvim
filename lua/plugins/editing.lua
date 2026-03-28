@@ -112,12 +112,6 @@ return {
 		end,
 	},
 	{
-		'https://github.com/nvim-treesitter/nvim-treesitter-context.git',
-		opts = {
-			enable = true,
-		},
-	},
-	{
 		'https://github.com/windwp/nvim-autopairs.git',
 		event = "InsertEnter",
 		config = true
