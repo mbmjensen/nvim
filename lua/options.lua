@@ -34,3 +34,6 @@ vim.opt.listchars = {
 -- Misc Settings
 vim.opt.confirm = true -- Prompt instead of rejecting commands such as a risky :write
 vim.opt.undofile = true -- Persist undo history for files between file reads
+vim.opt.termguicolors = true -- Enable 24-bit RGB colors in the terminal (colorscheme)
+vim.opt.timeout = true -- Enable key sequence timeout (which-key)
+vim.opt.timeoutlen = 300 -- Milliseconds to wait for a key sequence to complete (which-key)

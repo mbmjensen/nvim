@@ -37,8 +37,6 @@ return {
 				end,
 			})
 
-			-- Use Github light as the default theme
-			vim.opt.termguicolors = true
 			vim.opt.background = "light"
 			vim.cmd.colorscheme("github_light")
 		end,

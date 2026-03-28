@@ -2,27 +2,23 @@ return {
 	{
 		"https://github.com/folke/which-key.nvim.git",
 		event = "VeryLazy",
-		init = function()
-			vim.opt.timeout = true
-			vim.opt.timeoutlen = 300
-		end,
 		opts = {
 			preset = "modern",
 			triggers = {
-				{ "<auto>", mode = "nixsotc" },
-				{ "s",      mode = { "n", "v", name = "+search" } }
+				{ "<auto>", mode = "nixsotc" },            -- auto-trigger for most modes
+				{ "s",      mode = { "n", "v", name = "+search" } } -- manual trigger for s (remapped as search prefix)
 			},
-		},
-		plugins = {
-			marks = true, -- shows a list of your marks on ' and `
-			registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-			spelling = {
-				enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-				suggestions = 20, -- how many suggestions should be shown in the list?
+			plugins = {
+				marks = true,     -- show marks on ' and `
+				registers = true, -- show registers on " (normal) and <C-r> (insert)
+				spelling = {
+					enabled = true,   -- show WhichKey on z= to pick spelling suggestions
+					suggestions = 20, -- number of spelling suggestions to show
+				},
 			},
-		},
-		wo = {
-			winblend = 50,
+			wo = {
+				winblend = 50, -- semi-transparent popup window
+			},
 		},
 	},
 }

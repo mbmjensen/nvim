@@ -1,5 +1,4 @@
 local language_servers = {
-	"jdtls",
 	"lua_ls",
 	"pyright",
 	"vimls",
@@ -16,20 +15,33 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			require("lspconfig").jdtls.setup({
-				capabilities = capabilities,
-			})
+			-- jdtls is managed by nvim-java; set it up separately to avoid conflicts
+			require("lspconfig").jdtls.setup({ capabilities = capabilities })
 
-			require("lspconfig").lua_ls.setup({
-				capabilities = capabilities,
-			})
+			for _, server in ipairs(language_servers) do
+				require("lspconfig")[server].setup({ capabilities = capabilities })
+			end
 
-			require("lspconfig").pyright.setup({
-				capabilities = capabilities,
-			})
+			vim.api.nvim_create_autocmd('LspAttach', {
+				group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
+				callback = function(event)
+					local map = function(keys, func, desc)
+						vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+					end
 
-			require("lspconfig").vimls.setup({
-				capabilities = capabilities,
+					map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+					map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+					map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+					map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+					map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+					map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+					map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+					map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+					map('K', function()
+						vim.lsp.buf.hover({ border = "rounded" })
+					end, 'Hover Documentation')
+					map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+				end
 			})
 		end,
 	},
@@ -43,12 +55,10 @@ return {
 	},
 	{
 		"https://github.com/williamboman/mason-lspconfig.nvim.git",
-		opts = {
-		},
 		config = function()
 			require("mason-lspconfig").setup({
-				automatic_installation = false,
-				ensure_installed = language_servers,
+				automatic_installation = false, -- only install servers listed in ensure_installed
+				ensure_installed = vim.list_extend({ "jdtls" }, language_servers),
 			})
 		end
 	},
@@ -59,7 +69,7 @@ return {
 			library = {
 				{
 					path = "luvit-meta/library",
-					words = { "vim%.uv" },
+					words = { "vim%.uv" }, -- load typings only when vim.uv is referenced
 				},
 			},
 		},
@@ -74,7 +84,7 @@ return {
 			opts.sources = opts.sources or {}
 			table.insert(opts.sources, {
 				name = "lazydev",
-				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+				group_index = 0, -- prioritize above LuaLS completions
 			})
 		end,
 	},
