@@ -13,7 +13,6 @@ return {
 					search_history = { layout = { preset = "select" } },
 					commands = { layout = { preset = "select" } },
 					pickers = { layout = { preset = "select" } },
-					buffers = { layout = { preset = "select" } },
 				},
 			},
 		},
