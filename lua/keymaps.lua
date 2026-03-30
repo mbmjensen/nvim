@@ -61,18 +61,9 @@ vim.keymap.set("n", "<Leader>od", "<CMD>Trouble diagnostics toggle<CR>", { desc 
 vim.keymap.set("n", "<Leader>oq", "<CMD>Trouble qflist toggle<CR>", { desc = "Quickfix (Trouble)" })
 
 
--- System clipboard copy (cp operator) and paste (cab)
-_G._cp_operator = function(type)
-	local keys = ({ char = '`[v`]"+y', line = '`[V`]"+y', block = '`[<C-V>`]"+y' })[type]
-	if keys then
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), 'nx', false)
-	end
-end
-vim.keymap.set('n', 'cp', function() vim.opt.operatorfunc = 'v:lua._cp_operator'; return 'g@' end,
-	{ expr = true, desc = 'Copy to system clipboard' })
-vim.keymap.set('n', 'cpp', function() vim.cmd('normal! "+' .. vim.v.count1 .. 'yy') end,
-	{ desc = 'Copy line(s) to system clipboard' })
-vim.keymap.set('x', 'cp', '"+y', { desc = 'Copy selection to system clipboard' })
+-- System clipboard copy and paste
+vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set('n', 'cpp', '"+yy', { desc = 'Copy line to system clipboard' })
 vim.keymap.set('n', 'cv', '"+p', { desc = 'Paste from system clipboard' })
 
 -- LSP keymaps
