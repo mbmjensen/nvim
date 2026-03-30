@@ -13,7 +13,7 @@ return {
 			{ "https://github.com/nvim-java/nvim-java.git", opts = {} },
 		},
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			-- jdtls is managed by nvim-java; set it up separately to avoid conflicts
 			require("lspconfig").jdtls.setup({ capabilities = capabilities })
@@ -72,20 +72,14 @@ return {
 					words = { "vim%.uv" }, -- load typings only when vim.uv is referenced
 				},
 			},
+			integrations = {
+				-- expose lazydev completions as a blink source (configured in completion.lua)
+				blink = true,
+			},
 		},
 	},
 	{ -- optional `vim.uv` typings
 		"Bilal2453/luvit-meta",
 		lazy = true,
-	},
-	{ -- optional completion source for require statements and module annotations
-		"hrsh7th/nvim-cmp",
-		opts = function(_, opts)
-			opts.sources = opts.sources or {}
-			table.insert(opts.sources, {
-				name = "lazydev",
-				group_index = 0, -- prioritize above LuaLS completions
-			})
-		end,
 	},
 }
