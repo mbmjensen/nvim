@@ -73,7 +73,7 @@ return {
 				},
 			},
 			integrations = {
-				-- register lazydev as a native blink source (replaces the nvim-cmp compat shim)
+				-- expose lazydev completions as a blink source (configured in completion.lua)
 				blink = true,
 			},
 		},
