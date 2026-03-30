@@ -43,5 +43,4 @@ else
 	})
 	require("keymaps")
 	require("diagnostics")
-	require("system-copy").setup()
 end
