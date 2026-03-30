@@ -73,7 +73,7 @@ vim.keymap.set('n', 'cp', function() vim.opt.operatorfunc = 'v:lua._cp_operator'
 vim.keymap.set('n', 'cpp', function() vim.cmd('normal! "+' .. vim.v.count1 .. 'yy') end,
 	{ desc = 'Copy line(s) to system clipboard' })
 vim.keymap.set('x', 'cp', '"+y', { desc = 'Copy selection to system clipboard' })
-vim.keymap.set('n', 'cab', '"+p', { desc = 'Paste from system clipboard' })
+vim.keymap.set('n', 'cv', '"+p', { desc = 'Paste from system clipboard' })
 
 -- LSP keymaps
 vim.keymap.set("n", "<Leader>ls", "<CMD>LspStart<CR>", { desc = "Start LSP" })
