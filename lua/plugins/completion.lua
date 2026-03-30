@@ -63,13 +63,20 @@ return {
 				sources = {
 					-- lazydev is listed first so Lua API completions are prioritised
 					default = { "lazydev", "lsp", "buffer", "path", "snippets" },
-					cmdline = { "cmdline" },
 					providers = {
 						lazydev = {
 							name = "LazyDev",
 							module = "lazydev.integrations.blink",
 							score_offset = 100, -- rank above LSP completions for Lua files
 						},
+					},
+				},
+				-- cmdline is a separate mode with its own keymap; CR is safe to
+				-- accept here since it does not insert a newline in command mode
+				cmdline = {
+					keymap = {
+						preset = "cmdline",
+						["<CR>"] = { "accept", "fallback" },
 					},
 				},
 			}
