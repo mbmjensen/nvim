@@ -31,6 +31,20 @@ vim.opt.listchars = {
 	nbsp = "•", -- Non-breaking spaces
 }
 
+-- Clipboard: use OSC52 for the + register so copies reach the system clipboard
+-- even over SSH or inside tmux. The cp/cv keymaps in keymaps.lua rely on this.
+vim.g.clipboard = {
+	name = 'OSC 52',
+	copy = {
+		['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+		['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+	},
+	paste = {
+		['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+		['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+	},
+}
+
 -- Misc Settings
 vim.opt.confirm = true -- Prompt instead of rejecting commands such as a risky :write
 vim.opt.undofile = true -- Persist undo history for files between file reads

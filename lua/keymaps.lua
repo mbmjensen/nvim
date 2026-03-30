@@ -61,6 +61,11 @@ vim.keymap.set("n", "<Leader>od", "<CMD>Trouble diagnostics toggle<CR>", { desc 
 vim.keymap.set("n", "<Leader>oq", "<CMD>Trouble qflist toggle<CR>", { desc = "Quickfix (Trouble)" })
 
 
+-- System clipboard copy and paste (OSC52 backend configured in options.lua)
+vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = 'Copy to system clipboard' })
+vim.keymap.set('n', 'cpp', '"+yy', { desc = 'Copy line to system clipboard' })
+vim.keymap.set('n', 'cv', '"+p', { desc = 'Paste from system clipboard' })
+
 -- LSP keymaps
 vim.keymap.set("n", "<Leader>ls", "<CMD>LspStart<CR>", { desc = "Start LSP" })
 vim.keymap.set("n", "<Leader>lr", "<CMD>LspRestart<CR>", { desc = "Restart LSP" })
