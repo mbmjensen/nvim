@@ -19,9 +19,9 @@ return {
 				mv = function()
 					return true
 				end,
-				-- rm = function() -- currently not working
-				--     return true
-				-- end,
+				rm = function()
+					return true
+				end,
 			},
 		},
 		keys = {
