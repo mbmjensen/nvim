@@ -5,7 +5,7 @@ return {
 		lazy = false,
 		opts = {
 			picker = {
-				layout = { preset = "ivy" },
+				layout = { preset = "ivy", fullscreen = true },
 				ui_select = true,
 				sources = {
 					-- No preview needed for these; use a compact select layout
